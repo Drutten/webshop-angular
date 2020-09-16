@@ -1,0 +1,18 @@
+.products {
+  width: 80%;
+  margin: auto;
+  background-color: rgb(255, 255, 255);
+
+  .wrapper {
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+
+    .card {
+      margin: 8px 10px;
+
+    }
+  }
+}

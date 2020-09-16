@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "webshop-angular"
+    }
+  },
+  "defaultProject": "webshop-angular",
+  "cli": {
+    "analytics": "b66f069c-c983-40f0-b4ba-878506037254"
+  }
 }

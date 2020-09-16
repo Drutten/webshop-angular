@@ -1,0 +1,26 @@
+.row {
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: 800px) {
+    flex-direction: row;
+  }
+
+  .list-column {
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    @media (min-width: 800px) {
+      min-width: 400px;
+    }
+  }
+
+  .detail-column {
+    padding-left: 40px;
+  }
+}
+

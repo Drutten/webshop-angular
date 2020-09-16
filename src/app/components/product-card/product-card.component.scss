@@ -1,0 +1,46 @@
+.card {
+  position: relative;
+  width: 200px;
+  min-height: 450px;
+
+  .price-tag {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background-color: yellow;
+    padding: 2px 4px;
+  }
+
+  .image-container {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    cursor: pointer;
+
+    img {
+      width: 100%;
+
+    }
+  }
+
+  .text-container {
+    padding: 8px 4px;
+    &>div {
+      min-height: 70px;
+    }
+    .product-name {
+      font-weight: 600;
+    }
+
+    .buy-btn {
+      display: block;
+      background-color: rgb(62, 136, 196);
+      color: rgb(255, 255, 255);
+      width: 100%;
+      border: none;
+      border-radius: 3px;
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+  }
+}

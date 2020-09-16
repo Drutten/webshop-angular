@@ -1,0 +1,12 @@
+<div class="card">
+  <span class="price-tag">{{product.price}} SEK</span>
+  <div class="image-container">
+    <img [src]="product.imageUrl" [alt]="product.name">
+  </div>
+  <div class="text-container">
+    <div>
+      <span class="product-name">{{product.name}}</span>
+    </div>
+    <button type="button" class="buy-btn">Köp</button>
+  </div>
+</div>
