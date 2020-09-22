@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { CartService } from 'src/app/services/cart.service';
+import { CartServiceMock } from 'src/app/services/cart.service.mock';
 
 import { CartComponent } from './cart.component';
 
@@ -8,7 +10,8 @@ describe('CartComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CartComponent ]
+      declarations: [ CartComponent ],
+      providers: [{provide: CartService, useClass: CartServiceMock}]
     })
     .compileComponents();
   });
@@ -22,4 +25,8 @@ describe('CartComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should be a cart with 2 elements', () => {
+    expect(component.cart.length).toBe(2);
+  })
 });

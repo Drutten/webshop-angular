@@ -1,0 +1,86 @@
+<header>
+  <nav class="upper-nav">
+    <div>
+      <a
+        routerLink="/"
+        (click)="onFetchAllProducts()">
+        FILMSHOPPEN
+      </a>
+    </div>
+    <!-- <div><a routerLink="/admin"><fa-icon [icon]="userIcon"></fa-icon> <span class="admin-text">Administratör</span></a></div> -->
+
+    <div class="dropdown">
+      <button
+        class="dropdown-btn"
+        (click)="onToggleDropdown()"><fa-icon [icon]="userIcon"></fa-icon>&nbsp; <span class="admin-text">Administratör</span>&nbsp; <fa-icon [icon]="caretDownIcon"></fa-icon></button>
+
+      <div
+        class="dropdown-content"
+        [class.dropdownOpen]="isOpenDropdown">
+        <a routerLink="/admin">Logga in</a>
+      </div>
+
+    </div>
+
+  </nav>
+
+<!--Endast synlig på skärmbredd under 1000px-->
+  <nav class="hamburger-nav">
+    <app-hamburger (toggledHamburger)="handleToggledHamburger($event)"></app-hamburger>
+  </nav>
+
+
+  <nav
+    class="lower-nav"
+    [class]="(isOpen)? 'open' : 'notopen'">
+
+    <form [formGroup]="categoryForm">
+      <mat-form-field
+        class="categories-form-field"
+        appearance="outline">
+        <mat-label>Kategorier</mat-label>
+        <mat-select
+
+        (selectionChange)="onSelectCategory()"
+          placeholder="Kategorier"
+          formControlName="category">
+          <mat-option
+            *ngFor="let category of categories"
+            [value]="category.id">
+            {{category.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+
+
+    <form
+      class="search-form"
+      [formGroup]="searchForm"
+      (ngSubmit)="onSubmitSearch()">
+      <mat-form-field
+        class="search-form-field">
+        <div class="search-input">
+          <input
+            matInput
+            placeholder="Sök..."
+            formControlName="inputText">
+          <button
+            type="submit"
+            mat-raised-button>
+            <fa-icon [icon]="searchIcon"></fa-icon>
+          </button>
+        </div>
+
+      </mat-form-field>
+    </form>
+
+    <div class="cart-icon">
+      <a routerLink="/varukorg">
+        <fa-icon [icon]="shoppingCartIcon"></fa-icon>
+        <span [matBadge]="cartItems.length" matBadgeOverlap="false"></span>
+      </a>
+    </div>
+  </nav>
+</header>
+

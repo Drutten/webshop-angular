@@ -1,1 +1,63 @@
-<p>product-detail works!</p>
+<app-header></app-header>
+
+<div
+  class="fetching"
+  *ngIf="isFetching">
+  <mat-spinner></mat-spinner>
+</div>
+
+<div
+  class="error"
+  *ngIf="errorMessage">
+  <h3>Oops! Någonting gick fel</h3>
+  <h4>{{errorMessage}}</h4>
+</div>
+
+
+
+<div class="product-detail" *ngIf="product">
+
+  <div class="detail-row">
+
+    <div class="image-col">
+      <div>
+        <img [src]="product.imageUrl" [alt]="product.name">
+      </div>
+    </div>
+
+    <div class="info-col">
+      <div class="info-top">
+        <h1>{{product.name}}</h1>
+        <h3>{{product.year}}</h3>
+        <p>{{product.description}}</p>
+      </div>
+      <div class="info-bottom">
+        <h3>{{product.price}} SEK</h3>
+        <div class="buttons">
+          <button
+            *ngIf="!isInCart"
+            type="button"
+            mat-raised-button color="primary"
+            (click)="addToCart()">
+            Lägg i varukorg
+          </button>
+          <button
+          *ngIf="isInCart"
+            type="button"
+            mat-raised-button color="primary"
+            routerLink="/varukorg">
+            Till varukorgen
+          </button>
+          <button
+            type="button"
+            mat-raised-button color="primary"
+            routerLink="/">
+            Till Filmshoppen
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+

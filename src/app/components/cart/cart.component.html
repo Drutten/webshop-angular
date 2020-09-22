@@ -1,1 +1,24 @@
-<p>cart works!</p>
+<app-header></app-header>
+<div class="cart">
+
+  <div class="no-cart" *ngIf="!cart.length">
+    <div>
+      <h1>Din varukorg är tom</h1>
+      <button
+        type="button"
+        mat-raised-button
+        color="primary"
+        routerLink="/">
+        Till Filmshoppen
+      </button>
+    </div>
+
+  </div>
+
+  <div class="cart-wrapper" *ngIf="cart.length">
+    <app-cart-item-card
+      *ngFor="let item of cart"
+      [cartItem]="item"></app-cart-item-card>
+  </div>
+</div>
+

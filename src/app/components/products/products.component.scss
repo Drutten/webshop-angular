@@ -1,4 +1,5 @@
 .products {
+  position: relative;
   width: 80%;
   margin: auto;
   background-color: rgb(255, 255, 255);
@@ -14,5 +15,16 @@
       margin: 8px 10px;
 
     }
+  }
+
+  .fetching {
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .error {
+    margin-top: 60px;
+    text-align: center;
   }
 }

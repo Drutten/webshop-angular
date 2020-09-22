@@ -1,12 +1,25 @@
 <div class="card">
-  <span class="price-tag">{{product.price}} SEK</span>
-  <div class="image-container">
-    <img [src]="product.imageUrl" [alt]="product.name">
-  </div>
-  <div class="text-container">
-    <div>
-      <span class="product-name">{{product.name}}</span>
+  <div class="card-link" [routerLink]="[product.id]">
+    <span class="price-tag">{{product.price}} SEK</span>
+    <div class="image-container">
+      <img
+        [src]="product.imageUrl"
+        [alt]="product.name">
     </div>
-    <button type="button" class="buy-btn">Köp</button>
+    <div class="text-container">
+      <div>
+        <span class="product-name">{{product.name}}</span>
+      </div>
+    </div>
   </div>
+
+
+  <button
+    type="button"
+    mat-raised-button
+    color="primary"
+    (click)="addToCart()"
+    [disabled]="isInCart">
+    Köp
+  </button>
 </div>

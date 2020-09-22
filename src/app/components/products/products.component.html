@@ -1,9 +1,34 @@
+<app-products-header></app-products-header>
+
 <div class="products">
-  <div class="wrapper">
+
+  <div
+    class="fetching"
+    *ngIf="isFetching">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <div
+    class="error"
+    *ngIf="errorMessage">
+    <h3>Oops! Någonting gick fel</h3>
+    <h4>{{errorMessage}}</h4>
+  </div>
+
+  <div
+    class="wrapper"
+    *ngIf="!errorMessage && !isFetching && !products.length">
+    <h3>Varan hittades inte</h3>
+  </div>
+
+  <div
+    class="wrapper"
+    *ngIf="!isFetching && !errorMessage">
 
     <div class="card" *ngFor="let item of products">
       <app-product-card [product]="item"></app-product-card>
     </div>
 
   </div>
+
 </div>

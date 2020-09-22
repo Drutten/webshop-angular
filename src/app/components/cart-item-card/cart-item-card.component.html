@@ -1,0 +1,27 @@
+<div class="cart-item">
+
+  <div class="image-container">
+    <img [src]="cartItem.product.imageUrl" [alt]="cartItem.product.name">
+  </div>
+
+  <div class="cart-item-info">
+    <div class="text">
+      <h5>{{cartItem.product.name}}</h5>
+      <p>à <b>{{cartItem.product.price}}</b> SEK</p>
+    </div>
+    <div class="quantity">
+      <div>
+        <div class="min">-</div>
+        <div class="quantity-number">{{cartItem.quantity}}</div>
+        <div class="plus">+</div>
+      </div>
+    </div>
+    <div class="summary">
+      <span><b><i>{{cartItem.total}}</i></b>&nbsp;SEK</span>
+      <fa-icon
+        [icon]="trashIcon"
+        title="Ta bort"
+        (click)="remove()"></fa-icon>
+    </div>
+  </div>
+</div>

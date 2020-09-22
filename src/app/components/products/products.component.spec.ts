@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ProductService } from 'src/app/services/product.service';
+import { ProductServiceMock } from 'src/app/services/product.service.mock';
 
 import { ProductsComponent } from './products.component';
 
@@ -8,7 +10,8 @@ describe('ProductsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProductsComponent ]
+      declarations: [ ProductsComponent ],
+      providers: [{provide: ProductService, useClass: ProductServiceMock}]
     })
     .compileComponents();
   });
@@ -21,5 +24,9 @@ describe('ProductsComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should get products when loading', () => {
+    expect(component.products.length).toBe(3);
   });
 });

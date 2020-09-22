@@ -10,20 +10,37 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class ProductsComponent implements OnInit, OnDestroy {
   products: IProduct[] = [];
-  subscription: Subscription;
+  isFetching = false;
+  errorMessage = '';
+  productsSubscription: Subscription;
+  errorSubscription: Subscription;
+  isFetchingSubscription: Subscription;
 
   constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
-    this.subscription = this.productService.products$.subscribe((fetchedProducts: IProduct[]) => {
-      console.log(fetchedProducts);
-      this.products = fetchedProducts;
-    });
+    this.productsSubscription = this.productService.products$.subscribe(
+      (products) => {
+        this.products = products;
+      }
+    );
+    this.errorSubscription = this.productService.errorText$.subscribe(
+      (message) => {
+        this.errorMessage = message;
+      }
+    );
+    this.isFetchingSubscription = this.productService.isFetching$.subscribe(
+      (fetching) => {
+        this.isFetching = fetching;
+      }
+    )
     this.productService.fetchProducts();
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    this.productsSubscription.unsubscribe();
+    this.errorSubscription.unsubscribe();
+    this.isFetchingSubscription.unsubscribe();
   }
 
 }

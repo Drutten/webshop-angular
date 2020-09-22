@@ -1,8 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from '@angular/material/button';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSelectModule } from '@angular/material/select';
+import {MatInputModule} from '@angular/material/input';
+import {MatBadgeModule} from '@angular/material/badge';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 import { AppComponent } from './app.component';
 import { ProductsComponent } from './components/products/products.component';
 import { CartComponent } from './components/cart/cart.component';
@@ -17,6 +27,12 @@ import { OrderDetailComponent } from './components/order-detail/order-detail.com
 import { OrdersComponent } from './components/orders/orders.component';
 import { OrderStartComponent } from './components/order-start/order-start.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
+import { HamburgerComponent } from './components/hamburger/hamburger.component';
+import { ProductsHeaderComponent } from './components/products-header/products-header.component';
+import { CartItemCardComponent } from './components/cart-item-card/cart-item-card.component';
+
+
+
 
 @NgModule({
   declarations: [
@@ -33,12 +49,24 @@ import { ProductCardComponent } from './components/product-card/product-card.com
     OrderDetailComponent,
     OrdersComponent,
     OrderStartComponent,
-    ProductCardComponent
+    ProductCardComponent,
+    HamburgerComponent,
+    ProductsHeaderComponent,
+    CartItemCardComponent
   ],
   imports: [
     BrowserModule,
+    CommonModule,
+    ReactiveFormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatProgressSpinnerModule,
+    MatSelectModule,
+    MatInputModule,
+    MatBadgeModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
