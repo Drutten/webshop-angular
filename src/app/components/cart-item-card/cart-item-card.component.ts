@@ -29,6 +29,11 @@ export class CartItemCardComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // takes as an argument a number to add to quantity or negative number to subtract
+  update(add: number) {
+    this.cartService.updateCartItem(this.cartItem, add);
+  }
+
   remove() {
     this.cartService.removeCartItem(this.cartItem);
   }

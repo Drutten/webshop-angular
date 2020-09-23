@@ -23,5 +23,20 @@
   .cart-wrapper {
     display: flex;
     flex-direction: column;
+
+    .total {
+      display: flex;
+      flex-direction: column;
+      align-self: center;
+
+
+      @media (min-width: 500px) {
+        align-self: flex-end;
+      }
+
+      button {
+        margin-bottom: 8px;
+      }
+    }
   }
 }

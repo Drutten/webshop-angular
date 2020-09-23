@@ -8,34 +8,7 @@ import { IProduct } from '../interfaces/i-product';
   providedIn: 'root'
 })
 export class CartService implements ICartService{
-  private cartItems: ICartItem[] = [
-    {
-      product: {
-        name: 'Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb',
-        id: 1,
-        description: 'Kitty is a cat',
-        imageUrl: 'https://images-na.ssl-images-amazon.com/images/M/MV5BNTkxYjUxNDYtZGY0My00NTc2LThiZmYtNmNmNmU0NGVkZWYwXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_.jpg',
-        price: 100,
-        year: '2020',
-        productCategory: []
-      },
-      quantity: 1,
-      total: 100
-    },
-    {
-      product: {
-        name: 'Pelle',
-        id: 2,
-        description: 'Pelle is a cat who lost his tail',
-        imageUrl: 'https://images-na.ssl-images-amazon.com/images/M/MV5BYjJiZjMzYzktNjU0NS00OTkxLWEwYzItYzdhYWJjN2QzMTRlL2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg',
-        price: 150,
-        year: '2010',
-        productCategory: []
-      },
-      quantity: 1,
-      total: 150
-    }
-  ];
+  private cartItems: ICartItem[] = [];
   private cartItemsUpdated = new Subject<ICartItem[]>();
   cartItemsUpdated$ = this.cartItemsUpdated.asObservable();
 
@@ -56,11 +29,11 @@ export class CartService implements ICartService{
   }
 
 
-  removeCartItem(removedItem: ICartItem) {
+  removeCartItem(itemToRemove: ICartItem) {
     const updatedCartItems = [...this.cartItems];
     let index = -1;
     updatedCartItems.forEach((item, idx) => {
-      if(item.product.id === removedItem.product.id) {
+      if(item.product.id === itemToRemove.product.id) {
         index = idx;
       }
     });
@@ -70,4 +43,30 @@ export class CartService implements ICartService{
       this.cartItemsUpdated.next([...this.cartItems]);
     }
   }
+
+
+  updateCartItem(itemToUpdate: ICartItem, num: number) {
+    const newQuantity = itemToUpdate.quantity + num;
+    if(newQuantity <= 0) {
+      this.removeCartItem(itemToUpdate);
+    }
+    else {
+      const updatedCartItems: ICartItem[] = [...this.cartItems];
+      const newTotal = itemToUpdate.product.price * newQuantity;
+      const updatedCartItem: ICartItem = {
+          product: itemToUpdate.product,
+          quantity: newQuantity,
+          total: newTotal
+      }
+      updatedCartItems.forEach((item, idx) => {
+        if (item.product.id === itemToUpdate.product.id) {
+          // Replace
+          updatedCartItems.splice(idx, 1, updatedCartItem);
+        }
+      });
+      this.cartItems = updatedCartItems;
+      this.cartItemsUpdated.next([...this.cartItems]);
+    }
+  }
+
 }

@@ -11,9 +11,9 @@
     </div>
     <div class="quantity">
       <div>
-        <div class="min">-</div>
+        <div class="min" (click)="update(-1)">-</div>
         <div class="quantity-number">{{cartItem.quantity}}</div>
-        <div class="plus">+</div>
+        <div class="plus" (click)="update(1)">+</div>
       </div>
     </div>
     <div class="summary">

@@ -24,10 +24,14 @@ export class ProductsHeaderComponent implements OnInit, OnDestroy {
   caretDownIcon = faCaretDown;
   categorySubscription: Subscription;
   cartSubscription: Subscription;
+  errorSubscription: Subscription;
+  isFetchingSubscription: Subscription;
   categoryForm: FormGroup;
   searchForm: FormGroup;
   categories: ICategory[] = [];
   cartItems: ICartItem[] = [];
+  errorMessage = '';
+  isFetching = false;
   isOpen = false;
   isOpenDropdown = false;
 
@@ -43,6 +47,12 @@ export class ProductsHeaderComponent implements OnInit, OnDestroy {
     this.cartSubscription = this.cartService.cartItemsUpdated$.subscribe(cartItems => {
       this.cartItems = cartItems;
     });
+    this.isFetchingSubscription = this.categoryService.isFetchingCategories$.subscribe(fetching => {
+      this.isFetching = fetching;
+    });
+    this.errorSubscription = this.categoryService.categoryErrorText$.subscribe(message => {
+      this.errorMessage = message;
+    });
 
     this.categoryService.getCategories();
     this.cartItems = this.cartService.getCartItems();
@@ -57,6 +67,8 @@ export class ProductsHeaderComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.categorySubscription.unsubscribe();
     this.cartSubscription.unsubscribe();
+    this.isFetchingSubscription.unsubscribe();
+    this.errorSubscription.unsubscribe();
   }
 
 

@@ -18,7 +18,26 @@
   <div class="cart-wrapper" *ngIf="cart.length">
     <app-cart-item-card
       *ngFor="let item of cart"
-      [cartItem]="item"></app-cart-item-card>
+      [cartItem]="item">
+    </app-cart-item-card>
+
+    <div class="total">
+      <h2>Att betala: {{getCartTotal()}} SEK</h2>
+      <button
+        mat-raised-button
+        color="primary"
+        routerLink="/kassan"
+        >Till kassan
+      </button>
+      <button
+        mat-raised-button
+        color="primary"
+        routerLink="/"
+        >Till Filmshoppen
+      </button>
+    </div>
   </div>
+
+
 </div>
 

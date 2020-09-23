@@ -26,4 +26,12 @@ export class CartComponent implements OnInit, OnDestroy {
     this.cartSubscription.unsubscribe();
   }
 
+  getCartTotal(): number {
+    let cartTotal = 0;
+    this.cart.forEach(item => {
+      cartTotal += item.total;
+    })
+    return cartTotal;
+  }
+
 }

@@ -29,7 +29,7 @@ export class CategoryService implements ICategoryService{
     }, error => {
       console.log(error.status);
       this.isFetchingCategories.next(false);
-      this.errorText.next('Kategorier kunde inte hämtas');
+      this.errorText.next('Kategorier saknas');
     })
   }
 }

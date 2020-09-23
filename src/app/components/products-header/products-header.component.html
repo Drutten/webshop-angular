@@ -38,7 +38,7 @@
       <mat-form-field
         class="categories-form-field"
         appearance="outline">
-        <mat-label>Kategorier</mat-label>
+        <mat-label>{{(isFetching)? 'Hämtar...' : (errorMessage)? errorMessage : 'Kategorier'}}</mat-label>
         <mat-select
 
         (selectionChange)="onSelectCategory()"
