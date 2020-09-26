@@ -71,11 +71,18 @@ export class ProductsHeaderComponent implements OnInit, OnDestroy {
     this.errorSubscription.unsubscribe();
   }
 
+  getNumberOfProductsInCart(): number {
+    let numProducts = 0;
+    this.cartItems.forEach(item => {
+      numProducts += item.quantity;
+    });
+    return numProducts;
+  }
 
 
   onSelectCategory() {
     const value: number = this.categoryForm.value.category;
-    console.log(value);
+    // console.log(value);
     this.categoryForm.reset();
     this.productService.fetchProducts(value);
   }

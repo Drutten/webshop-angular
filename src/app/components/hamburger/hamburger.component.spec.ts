@@ -22,4 +22,20 @@ describe('HamburgerComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should toggle #isOpen', () => {
+    expect(component.isOpen).toBe(false);
+    component.onToggle();
+    fixture.detectChanges();
+    expect(component.isOpen).toBe(true);
+    component.onToggle();
+    fixture.detectChanges();
+    expect(component.isOpen).toBe(false);
+  });
+
+  it('should emit when toggled', () => {
+    const spy = spyOn(component.toggledHamburger, 'emit');
+    component.onToggle();
+    expect(spy).toHaveBeenCalled();
+  })
 });

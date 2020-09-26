@@ -28,8 +28,8 @@ export class CartServiceMock implements ICartService {
         year: '2010',
         productCategory: []
       },
-      quantity: 1,
-      total: 150
+      quantity: 2,
+      total: 300
     }
   ];
   private cartItemsUpdated = new Subject<ICartItem[]>();
@@ -39,4 +39,8 @@ export class CartServiceMock implements ICartService {
     return [...this.cartItems];
   }
   addCartItem(addedProduct: IProduct): void {}
+
+  updateCartItem(itemToUpdate: ICartItem, num: number): void {}
+
+  removeCartItem(itemToRemove: ICartItem): void {}
 }

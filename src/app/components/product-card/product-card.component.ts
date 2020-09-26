@@ -10,15 +10,8 @@ import { CartService } from 'src/app/services/cart.service';
   styleUrls: ['./product-card.component.scss']
 })
 export class ProductCardComponent implements OnInit, OnDestroy {
-  @Input() product: IProduct = {
-    name: '',
-    id: 0,
-    description: '',
-    imageUrl: '',
-    price: 0,
-    year: '',
-    productCategory: []
-  };
+  @Input() product: IProduct;
+  
   cartSubscription: Subscription;
   isInCart = false;
 

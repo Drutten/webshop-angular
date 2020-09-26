@@ -69,4 +69,9 @@ export class CartService implements ICartService{
     }
   }
 
+  clearCart() {
+    this.cartItems = [];
+    this.cartItemsUpdated.next([...this.cartItems]);
+  }
+
 }

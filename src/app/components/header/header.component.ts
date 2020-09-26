@@ -44,4 +44,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.isOpenDropdown = !this.isOpenDropdown;
   }
 
+  getNumberOfProductsInCart(): number {
+    let numProducts = 0;
+    this.cartItems.forEach(item => {
+      numProducts += item.quantity;
+    });
+    return numProducts;
+  }
+
 }

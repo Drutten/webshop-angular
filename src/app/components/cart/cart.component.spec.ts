@@ -28,5 +28,10 @@ describe('CartComponent', () => {
 
   it('should be a cart with 2 elements', () => {
     expect(component.cart.length).toBe(2);
+  });
+
+  it('should be a total of 400 in cart', () => {
+    const total: number = component.getCartTotal();
+    expect(total).toBe(400);
   })
 });

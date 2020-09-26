@@ -9,19 +9,7 @@ import { CartService } from 'src/app/services/cart.service';
   styleUrls: ['./cart-item-card.component.scss']
 })
 export class CartItemCardComponent implements OnInit {
-  @Input() cartItem: ICartItem = {
-    product: {
-      name: '',
-      id: 0,
-      description: '',
-      imageUrl: '',
-      price: 0,
-      year: '',
-      productCategory: []
-    },
-    quantity: 0,
-    total: 0
-  }
+  @Input() cartItem: ICartItem;
   trashIcon = faTrash;
 
   constructor(private cartService: CartService) { }

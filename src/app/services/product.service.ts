@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 
 import { IProduct } from '../interfaces/i-product';
 import { IProductService } from '../interfaces/i-product-service';
+import { API_PRODUCTS_ENDPOINT, API_SEARCH_ENDPOINT } from '../shared/constants';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +28,7 @@ export class ProductService implements IProductService {
   fetchProducts(category = 0): void {
     this.isFetching.next(true);
     this.errorText.next('');
-    this.http.get<IProduct[]>('https://medieinstitutet-wie-products.azurewebsites.net/api/products')
+    this.http.get<IProduct[]>(API_PRODUCTS_ENDPOINT)
     .pipe(
       map(products => products.filter(product => product.price > 0)),
       map(products => {
@@ -61,7 +62,7 @@ export class ProductService implements IProductService {
   fetchProduct(id: number) {
     this.isFetching.next(true);
     this.errorText.next('');
-    this.http.get<IProduct>(`https://medieinstitutet-wie-products.azurewebsites.net/api/products/${id}`)
+    this.http.get<IProduct>(`${API_PRODUCTS_ENDPOINT}/${id}`)
     .subscribe(product => {
       this.isFetching.next(false);
       this.product.next(product);
@@ -76,7 +77,7 @@ export class ProductService implements IProductService {
   fetchProductsBySearch(searchText: string) {
     this.isFetching.next(true);
     this.errorText.next('');
-    this.http.get<IProduct[]>(`https://medieinstitutet-wie-products.azurewebsites.net/api/search?searchText=${searchText}`)
+    this.http.get<IProduct[]>(`${API_SEARCH_ENDPOINT}?searchText=${searchText}`)
     .pipe(map(products => products.filter(product => product.price > 0)))
     .subscribe(products => {
       this.isFetching.next(false);

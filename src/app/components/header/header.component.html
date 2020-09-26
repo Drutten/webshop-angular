@@ -36,7 +36,7 @@
     <div class="cart-icon">
       <a routerLink="/varukorg">
         <fa-icon [icon]="shoppingCartIcon"></fa-icon>
-        <span [matBadge]="cartItems.length" matBadgeOverlap="false"></span>
+        <span [matBadge]="getNumberOfProductsInCart()" matBadgeOverlap="false"></span>
       </a>
     </div>
   </nav>

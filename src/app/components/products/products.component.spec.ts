@@ -26,7 +26,7 @@ describe('ProductsComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should get products when loading', () => {
+  it('should get 3 products when loading', () => {
     expect(component.products.length).toBe(3);
   });
 });

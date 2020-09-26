@@ -28,7 +28,7 @@
     font-size: 0.8em;
 
     @media (min-width: 700px) {
-      flex-direction: row;
+      flex-flow: row wrap;
       align-items: space-between;
       max-width: 50%;
       font-size: 1em;
@@ -45,55 +45,68 @@
       }
     }
 
-    .quantity {
+    .summary-info {
       display: flex;
-      flex-direction: row;
-      flex-wrap: nowrap;
-      justify-content: flex-start;
-      align-items: center;
+      flex-direction: column;
 
       @media (min-width: 700px) {
-        margin: 0 20px;
+        flex-flow: row wrap;
       }
 
-      & > div {
+
+
+      .quantity {
         display: flex;
         flex-direction: row;
-        margin: 6px 0;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-items: center;
 
-        .min, .plus {
+        @media (min-width: 700px) {
+          //margin: 0 20px;
+        }
+
+        & > div {
           display: flex;
-          justify-content: center;
-          align-items: center;
-          border: 1px solid black;
-          margin: 0 4px;
-          width: 20px;
-          height: 20px;
-          border-radius: 50%;
+          flex-direction: row;
+          margin: 6px 0;
+
+          .min, .plus {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid black;
+            margin: 0 4px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            cursor: pointer;
+          }
+
+          .quantity-number {
+            min-width: 20px;
+            text-align: center;
+          }
+        }
+      }
+
+      .summary {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        fa-icon {
+          margin-left: 20px;
           cursor: pointer;
+          color: rgb(202, 9, 9);
         }
 
-        .quantity-number {
-          min-width: 20px;
-          text-align: center;
+        @media (min-width: 700px) {
+          margin: 0 20px;
         }
       }
+
     }
 
-    .summary {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-
-      fa-icon {
-        margin-left: 20px;
-        cursor: pointer;
-        color: rgb(202, 9, 9);
-      }
-
-      @media (min-width: 700px) {
-        margin: 0 20px;
-      }
-    }
   }
 }

@@ -9,8 +9,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
-import {MatInputModule} from '@angular/material/input';
-import {MatBadgeModule} from '@angular/material/badge';
+import { MatInputModule } from '@angular/material/input';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AppComponent } from './app.component';
@@ -66,6 +67,7 @@ import { CartItemCardComponent } from './components/cart-item-card/cart-item-car
     MatSelectModule,
     MatInputModule,
     MatBadgeModule,
+    MatFormFieldModule,
     FontAwesomeModule
   ],
   providers: [],

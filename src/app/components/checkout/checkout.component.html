@@ -1,1 +1,89 @@
-<p>checkout works!</p>
+<app-header></app-header>
+
+<h2>Kassan</h2>
+
+<div class="message">
+  <div *ngIf="isSuccessful" class="success">
+    <p>Tack för ditt köp!</p>
+  </div>
+
+  <div *ngIf="error" class="error">
+    <p>{{error}}</p>
+  </div>
+
+  <div *ngIf="!cart.length && !isSuccessful" class="empty">
+    <p>Varukorgen är tom!</p>
+    <button
+      routerLink="/"
+      mat-raised-button
+      color="primary">
+      Till Filmshoppen
+    </button>
+  </div>
+</div>
+
+
+<div class="checkout" *ngIf="cart.length">
+  <div class="form-col">
+
+    <h4>Dina uppgifter</h4>
+
+    <form [formGroup]="form" (ngSubmit)="onCreateOrder()">
+      <fieldset>
+        <div class="email">
+          <label for="email">E-Post</label>
+          <br>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            formControlName="email"
+            >
+            <span
+              class="help"
+              *ngIf="!form.get('email').valid && form.get('email').touched">
+              Du behöver ange en giltig e-postadress
+            </span>
+        </div>
+      </fieldset>
+
+
+      <fieldset>
+        <legend>Välj betalsätt</legend>
+        <div *ngFor="let val of radioButtonValues" class="radio">
+          <label [for]="val">
+            <input
+            type="radio"
+            name="payment"
+            [id]="val"
+            [value]="val"
+            formControlName="payment">
+            {{val}}
+          </label>
+        </div>
+      </fieldset>
+      <button
+        type="submit"
+        mat-raised-button
+        color="primary"
+        [disabled]="!form.valid || cart.length === 0">
+        Slutför köp
+      </button>
+    </form>
+
+  </div>
+
+
+
+
+  <div class="cart-col">
+
+
+    <div *ngIf="cart.length && !error" class="cart">
+      <h4>Varukorg</h4>
+      <app-cart-item-card
+        *ngFor="let item of cart"
+        [cartItem]="item"></app-cart-item-card>
+    </div>
+  </div>
+</div>

@@ -7,7 +7,6 @@
         FILMSHOPPEN
       </a>
     </div>
-    <!-- <div><a routerLink="/admin"><fa-icon [icon]="userIcon"></fa-icon> <span class="admin-text">Administratör</span></a></div> -->
 
     <div class="dropdown">
       <button
@@ -78,7 +77,7 @@
     <div class="cart-icon">
       <a routerLink="/varukorg">
         <fa-icon [icon]="shoppingCartIcon"></fa-icon>
-        <span [matBadge]="cartItems.length" matBadgeOverlap="false"></span>
+        <span [matBadge]="getNumberOfProductsInCart()" matBadgeOverlap="false"></span>
       </a>
     </div>
   </nav>
