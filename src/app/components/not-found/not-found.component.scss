@@ -1,0 +1,20 @@
+.not-found {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h2 {
+    font-weight: 400;
+    font-size: 40px;
+    margin: 40px 0 20px;
+  }
+
+  p {
+    font-size: 18px;
+  }
+
+  button {
+    margin: 28px 0;
+  }
+}

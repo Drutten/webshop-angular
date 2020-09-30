@@ -1,1 +1,48 @@
-<p>order-detail works! ID: {{id}}</p>
+
+<div  class="order-detail">
+
+  <div
+    *ngIf="isFetching"
+    class="fetching">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <div
+    *ngIf="errorText"
+    class="error">
+    <h3>Oops! Någonting gick fel</h3>
+    <h4>{{errorText}}</h4>
+  </div>
+
+
+  <div *ngIf="order">
+
+    <div class="order">
+      <button
+        type="button"
+        mat-raised-button
+        color="warn"
+        (click)="onDelete()">
+        Ta bort order
+      </button>
+      <h4>Order {{order.id}}</h4>
+      <p>Skapad av {{order.createdBy}}</p>
+      <p>{{getDateString(order.created)}}</p>
+      <p>Totalt: {{order.totalPrice}} SEK</p>
+    </div>
+
+
+    <div>
+      <h4>Orderrader</h4>
+      <ul>
+        <li *ngFor="let item of order.orderRows">
+          <div class="order-row-info"><span>Orderrad id</span> <span class="">{{item.id}}</span></div>
+          <div class="order-row-info shadow"><span>Artikel id</span> <span class="">{{item.productId}}</span></div>
+          <div class="order-row-info"><span>Antal:</span> <span>{{item.amount}}</span></div>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+</div>

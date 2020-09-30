@@ -8,7 +8,6 @@ import { CartService } from 'src/app/services/cart.service';
 import { OrderService } from 'src/app/services/order.service';
 import { COMPANY_ID } from 'src/app/shared/constants';
 
-
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
@@ -57,7 +56,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   onCreateOrder() {
     const newOrder = {
       companyId: COMPANY_ID,
-      created: '2020-09-23',
+      created: new Date().toUTCString(),
       createdBy: this.form.value.email,
       paymentMethod: this.form.value.payment,
       totalPrice: this.calculateTotalPrice(),

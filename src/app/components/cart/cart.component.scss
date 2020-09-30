@@ -12,10 +12,14 @@
 
       h1 {
         margin: 40px 0;
+        font-weight: 400;
+        font-size: 36px;
       }
-
+      p {
+        font-size: 18px;
+      }
       button {
-        width: 100%;
+        margin: 28px 0;
       }
     }
   }
@@ -23,6 +27,12 @@
   .cart-wrapper {
     display: flex;
     flex-direction: column;
+
+    h2 {
+      align-self: center;
+      font-weight: 400;
+      margin: 0 0 18px;
+    }
 
     .total {
       display: flex;

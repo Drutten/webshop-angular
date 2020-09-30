@@ -1,0 +1,49 @@
+
+.order-detail {
+
+  .fetching {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .error {
+    margin-top: 40px;
+    text-align: center;
+    color: rgb(204, 8, 8);
+  }
+
+
+  .order {
+    border-bottom: 1px solid rgb(189, 187, 187);
+    p {
+      margin: 6px 0;
+    }
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    li {
+      padding: 6px 0;
+      border-bottom: 1px solid  rgb(189, 187, 187);
+      .order-row-info {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+
+        & > span:last-child {
+          min-width: 40px;
+          color: rgb(34, 7, 189);
+        }
+      }
+
+      .shadow {
+        background-color: rgb(235, 231, 231);
+      }
+
+    }
+  }
+}

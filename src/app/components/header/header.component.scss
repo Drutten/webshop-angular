@@ -1,6 +1,21 @@
 nav {
   background-color: rgb(250, 250, 250);
   display: flex;
+  box-shadow: 0 4px 2px -2px rgb(174, 174, 175);
+
+  .admin {
+    display: none;
+
+    @media (min-width: 1000px) {
+      display: inline;
+      margin-left: 14px;
+    }
+  }
+
+  a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+  }
 
   .dropdown {
     position: relative;
@@ -11,12 +26,6 @@ nav {
       border: none;
       cursor: pointer;
 
-      .admin-text {
-        display: none;
-        @media (min-width: 1000px) {
-          display: inline;
-        }
-      }
     }
 
     .dropdown-content {
@@ -37,11 +46,6 @@ nav {
         color: rgb(0, 0, 0);
       }
 
-      @media (min-width: 1000px) {
-        left: 0px;
-        min-width: 170px;
-        font-size: 16px;
-      }
     }
     .dropdownOpen {display: block;}
   }
@@ -49,10 +53,7 @@ nav {
 
 
 
-  a {
-    text-decoration: none;
-    color: rgb(0, 0, 0);
-  }
+
 
   .cart-icon {
     display: flex;
@@ -82,6 +83,11 @@ nav {
   padding: 14px 18px;
   justify-content: space-between;
   align-items: center;
+  font-size: 0.8em;
+
+  @media (min-width: 700px) {
+    font-size: 1em;
+  }
 }
 
 .lower-nav {
@@ -117,6 +123,14 @@ nav {
     }
   }
 
+  .admin-lower {
+    padding: 6px 0;
+    text-align: center;
+    @media (min-width: 1000px) {
+      display: none;
+    }
+  }
+
 }
 
 .lower-nav.open {
@@ -130,3 +144,6 @@ nav {
     display: flex;
   }
 }
+
+
+

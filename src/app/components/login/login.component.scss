@@ -1,0 +1,47 @@
+.login {
+  & > div {
+    width: 80%;
+    margin: 60px auto;
+
+    @media (min-width: 700px) {
+      width: 50%;
+    }
+
+    @media (min-width: 1000px) {
+      width: 40%;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    form {
+      fieldset {
+        border: none;
+
+        .username, .password {
+          margin: 20px 0;
+
+
+          label {
+            font-size: 20px;
+          }
+
+          input {
+            width: 100%;
+            padding: 8px 14px;
+            border-radius: 4px;
+          }
+          .help {
+            color: rgb(235, 22, 22);
+          }
+        }
+
+        button {
+          width: 100%;
+          margin: 20px 0;
+        }
+      }
+    }
+  }
+}

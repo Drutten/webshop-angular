@@ -52,9 +52,9 @@ export class ProductService implements IProductService {
       this.isFetching.next(false);
       this.products.next(products);
     }, error => {
-      console.log(error.status);
+      console.log(error);
       this.isFetching.next(false);
-      this.errorText.next(this.getErrorMessage(error.status));
+      this.errorText.next((error.status)? this.getErrorMessage(error.status) : 'Försök igen lite senare');
     });
   }
 
@@ -68,7 +68,7 @@ export class ProductService implements IProductService {
       this.product.next(product);
     }, error => {
       this.isFetching.next(false);
-      this.errorText.next(this.getErrorMessage(error.status));
+      this.errorText.next((error.status)? this.getErrorMessage(error.status) : 'Försök igen lite senare');
     });
   }
 
@@ -85,27 +85,22 @@ export class ProductService implements IProductService {
     }, error => {
       // console.log(error.status);
       this.isFetching.next(false);
-      this.errorText.next(this.getErrorMessage(error.status));
+      this.errorText.next((error.status) ? this.getErrorMessage(error.status) : 'Försök igen lite senare');
     })
   }
 
 
 
-
-
-  // Hjälpmetoder
-  private getErrorMessage(statusCode: number): string {
+  private getErrorMessage(status: number): string {
     let text = '';
-    switch(statusCode) {
-      case 400: text = `Statuskod 400. Felaktig begäran från klienten`;
+    switch(status) {
+      case 400: text = `Felaktig begäran från klienten`;
       break;
-      case 404: text = `Statuskod 404. Varan kunde inte hittas`;
+      case 404: text = `Varan kunde inte hittas`;
       break;
-      case 500: text = `Statuskod 500. Internt serverfel. Försök igen lite senare`;
+      case 500: text = `Internt serverfel. Försök igen lite senare`;
       break;
-      case 0: text = `Statuskod 0. Okänt fel. Försök igen lite senare`;
-      break;
-      default: text = `Statuskod ${statusCode}.`;
+      default: text = `Försök igen lite senare`;
     }
     return text;
   }

@@ -1,1 +1,61 @@
-<p>login works!</p>
+<div class="login">
+  <div>
+    <h1>Logga in</h1>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <fieldset>
+        <div class="username">
+          <label for="username">Användarnamn</label>
+          <br>
+          <input
+            type="text"
+            name="username"
+            id="username"
+            formControlName="username"
+            >
+            <br>
+            <span
+              class="help"
+              *ngIf="!loginForm.get('username').valid && loginForm.get('username').touched">
+              Ange användarnamn
+            </span>
+        </div>
+
+        <div class="password">
+          <label for="password">Lösenord</label>
+          <br>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            formControlName="password"
+            >
+            <br>
+            <span
+              class="help"
+              *ngIf="!loginForm.get('password').valid && loginForm.get('password').touched">
+              Ange minst 4 tecken
+            </span>
+        </div>
+
+      <button
+        type="submit"
+        mat-raised-button
+        color="primary"
+        [disabled]="!loginForm.valid">
+        Logga in
+      </button>
+
+      <button
+        type="button"
+        mat-raised-button
+        color="primary"
+        routerLink="/">
+        Till Filmshoppen
+      </button>
+
+      </fieldset>
+    </form>
+
+
+  </div>
+</div>

@@ -4,6 +4,7 @@
   <div class="no-cart" *ngIf="!cart.length">
     <div>
       <h1>Din varukorg är tom</h1>
+      <p>Men så behöver det inte vara</p>
       <button
         type="button"
         mat-raised-button
@@ -16,6 +17,9 @@
   </div>
 
   <div class="cart-wrapper" *ngIf="cart.length">
+
+    <h2>Varukorg</h2>
+
     <app-cart-item-card
       *ngFor="let item of cart"
       [cartItem]="item">

@@ -10,6 +10,8 @@ import { ProductService } from 'src/app/services/product.service';
 import { ICategory } from 'src/app/interfaces/i-category';
 import { ICartItem } from 'src/app/interfaces/i-cart-item';
 import { CartService } from 'src/app/services/cart.service';
+import { LoginService } from 'src/app/services/login.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -26,6 +28,7 @@ export class ProductsHeaderComponent implements OnInit, OnDestroy {
   cartSubscription: Subscription;
   errorSubscription: Subscription;
   isFetchingSubscription: Subscription;
+  loginSubscription: Subscription;
   categoryForm: FormGroup;
   searchForm: FormGroup;
   categories: ICategory[] = [];
@@ -34,10 +37,13 @@ export class ProductsHeaderComponent implements OnInit, OnDestroy {
   isFetching = false;
   isOpen = false;
   isOpenDropdown = false;
+  loggedIn = false;
 
   constructor(private categoryService: CategoryService,
     private productService: ProductService,
-    private cartService: CartService) { }
+    private cartService: CartService,
+    private loginService: LoginService,
+    private router: Router) { }
 
 
   ngOnInit(): void {
@@ -53,9 +59,13 @@ export class ProductsHeaderComponent implements OnInit, OnDestroy {
     this.errorSubscription = this.categoryService.categoryErrorText$.subscribe(message => {
       this.errorMessage = message;
     });
+    this.loginSubscription = this.loginService.isLoggedIn$.subscribe(loggedIn => {
+      this.loggedIn = loggedIn;
+    });
 
     this.categoryService.getCategories();
     this.cartItems = this.cartService.getCartItems();
+    this.loggedIn = this.loginService.getIsLoggedIn();
     this.categoryForm = new FormGroup({
       category: new FormControl(null)
     });
@@ -69,6 +79,7 @@ export class ProductsHeaderComponent implements OnInit, OnDestroy {
     this.cartSubscription.unsubscribe();
     this.isFetchingSubscription.unsubscribe();
     this.errorSubscription.unsubscribe();
+    this.loginSubscription.unsubscribe();
   }
 
   getNumberOfProductsInCart(): number {
@@ -104,6 +115,11 @@ export class ProductsHeaderComponent implements OnInit, OnDestroy {
 
   onToggleDropdown() {
     this.isOpenDropdown = !this.isOpenDropdown;
+  }
+
+  onLogOut() {
+    this.loginService.logout();
+    this.router.navigate(['']);
   }
 
 }

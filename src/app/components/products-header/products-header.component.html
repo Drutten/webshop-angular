@@ -2,24 +2,47 @@
   <nav class="upper-nav">
     <div>
       <a
-        routerLink="/"
+        routerLink="/produkter"
         (click)="onFetchAllProducts()">
         FILMSHOPPEN
       </a>
+      <a
+        *ngIf="loggedIn"
+        routerLink="/admin/ordrar"
+        class="admin">
+        ADMIN
+      </a>
     </div>
 
-    <div class="dropdown">
-      <button
-        class="dropdown-btn"
-        (click)="onToggleDropdown()"><fa-icon [icon]="userIcon"></fa-icon>&nbsp; <span class="admin-text">Administratör</span>&nbsp; <fa-icon [icon]="caretDownIcon"></fa-icon></button>
+    <div class="login">
 
-      <div
-        class="dropdown-content"
-        [class.dropdownOpen]="isOpenDropdown">
-        <a routerLink="/admin">Logga in</a>
+      <div class="dropdown">
+        <button
+          class="dropdown-btn"
+          (click)="onToggleDropdown()"
+          title="Admin">
+          <fa-icon [icon]="userIcon"></fa-icon>&nbsp; <fa-icon [icon]="caretDownIcon"></fa-icon>
+        </button>
+
+        <div
+          *ngIf="!loggedIn"
+          routerLink="/login"
+          class="dropdown-content"
+          [class.dropdownOpen]="isOpenDropdown">
+          <a>Logga in</a>
+        </div>
+
+        <div
+          *ngIf="loggedIn"
+          (click)="onLogOut()"
+          class="dropdown-content"
+          [class.dropdownOpen]="isOpenDropdown">
+          <a>Logga ut</a>
+        </div>
+
       </div>
-
     </div>
+
 
   </nav>
 
@@ -32,6 +55,14 @@
   <nav
     class="lower-nav"
     [class]="(isOpen)? 'open' : 'notopen'">
+
+
+    <a
+      *ngIf="loggedIn"
+      class="admin-lower"
+      routerLink="/admin/ordrar">
+      ADMIN
+    </a>
 
     <form [formGroup]="categoryForm">
       <mat-form-field
@@ -75,7 +106,7 @@
     </form>
 
     <div class="cart-icon">
-      <a routerLink="/varukorg">
+      <a routerLink="/varukorg" title="Varukorg">
         <fa-icon [icon]="shoppingCartIcon"></fa-icon>
         <span [matBadge]="getNumberOfProductsInCart()" matBadgeOverlap="false"></span>
       </a>

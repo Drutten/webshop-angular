@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { IOrder } from 'src/app/interfaces/i-order';
 
 @Component({
   selector: 'app-order-item',
@@ -6,8 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./order-item.component.scss']
 })
 export class OrderItemComponent implements OnInit {
-  @Input() order: string;
-  @Input() index: number;
+  @Input() order: IOrder;
 
   constructor() { }
 

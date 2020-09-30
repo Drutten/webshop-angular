@@ -65,7 +65,7 @@ describe('CartItemCardComponent', () => {
         productCategory: []
       },
       quantity: 2,
-      total: 100
+      total: 200
     }
     @ViewChild(CartItemCardComponent) public cartItemCardComponent: CartItemCardComponent;
   }
