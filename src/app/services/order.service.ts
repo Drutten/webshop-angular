@@ -33,7 +33,6 @@ export class OrderService implements IOrderService{
     this.http.get<IOrder[]>(API_ORDERS_ENDPOINT + '?companyId=' + COMPANY_ID)
     .subscribe(orders => {
       this.isFetching.next(false);
-      console.log(orders);
       this.orders.next(orders);
     }, err => {
       this.isFetching.next(false);
@@ -61,7 +60,6 @@ export class OrderService implements IOrderService{
     this.http.post(API_ORDERS_ENDPOINT, data)
     .subscribe(res => {
       this.isSuccessful.next(true);
-      console.log(res);
     }, err => {
       console.log(err);
       this.errorMessage.next('Köpet kunde inte genomföras. Försök igen senare');
@@ -72,7 +70,6 @@ export class OrderService implements IOrderService{
     this.errorMessage.next('');
     this.http.delete(`${API_ORDERS_ENDPOINT}/${id}`)
     .subscribe(res => {
-      console.log(res);
       this.fetchOrders();
     }, err => {
       this.errorMessage.next(`Någonting gick fel när ordern skulle tas bort`);

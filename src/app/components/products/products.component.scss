@@ -1,8 +1,9 @@
 .products {
   position: relative;
-  width: 80%;
+  //width: 100%;
   margin: auto;
   background-color: rgb(255, 255, 255);
+  padding: 0 40px;
 
   .wrapper {
     margin-top: 40px;
@@ -18,7 +19,6 @@
 
     .card {
       margin: 8px 10px;
-
     }
   }
 

@@ -83,7 +83,7 @@ export class ProductService implements IProductService {
       this.isFetching.next(false);
       this.products.next(products);
     }, error => {
-      // console.log(error.status);
+      console.log(error);
       this.isFetching.next(false);
       this.errorText.next((error.status) ? this.getErrorMessage(error.status) : 'Försök igen lite senare');
     })

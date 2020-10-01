@@ -5,10 +5,22 @@
 <div class="message">
   <div *ngIf="isSuccessful" class="success">
     <p>Tack för ditt köp!</p>
+    <button
+      routerLink="/"
+      mat-raised-button
+      color="primary">
+      Till Filmshoppen
+    </button>
   </div>
 
   <div *ngIf="error" class="error">
     <p>{{error}}</p>
+    <button
+      routerLink="/"
+      mat-raised-button
+      color="primary">
+      Till Filmshoppen
+    </button>
   </div>
 
   <div *ngIf="!cart.length && !isSuccessful" class="empty">
@@ -23,7 +35,7 @@
 </div>
 
 
-<div class="checkout" *ngIf="cart.length">
+<div class="checkout" *ngIf="cart.length && !error">
   <div class="form-col">
 
     <h4>Dina uppgifter</h4>

@@ -4,6 +4,7 @@ import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ICategory } from '../interfaces/i-category';
 import { ICategoryService } from '../interfaces/i-category-service';
+import { API_CATEGORIES_ENDPOINT } from '../shared/constants';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,7 @@ export class CategoryService implements ICategoryService{
   getCategories(): void {
     this.isFetchingCategories.next(true);
     this.errorText.next('');
-    this.http.get<ICategory[]>('https://medieinstitutet-wie-products.azurewebsites.net/api/categories')
+    this.http.get<ICategory[]>(API_CATEGORIES_ENDPOINT)
     .pipe(map(categories => categories.filter(category => category.name)))
     .subscribe(categories => {
       this.isFetchingCategories.next(false);
