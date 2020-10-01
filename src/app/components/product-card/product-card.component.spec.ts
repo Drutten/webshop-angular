@@ -33,7 +33,7 @@ describe('ProductCardComponent', () => {
 
   it('should display Test as name', () => {
     testHostFixture.detectChanges();
-    expect(testHostFixture.nativeElement.querySelector('.product-name').innerText).toEqual('Test');
+    expect(testHostFixture.nativeElement.querySelector('.product-name').innerText).toContain('Test');
   });
 
   it('should call service method #addCartItem when calling #addToCart', () => {
@@ -49,12 +49,12 @@ describe('ProductCardComponent', () => {
     expect(testHostComponent.productCardComponent.product.id).toBe(1);
   })
 
-  it('#isInCart should be true when product with id 1 found in cart', () => {
+  it('#isInCart should be true when product with id 1 is found in cart', () => {
     const cartService = testHostFixture.debugElement.injector.get(CartService);
-    testHostComponent.productCardComponent.setIsInCart(cartService.getCartItems());
+    testHostComponent.productCardComponent.setIsInCart(cartService['cartItems']);
     testHostFixture.detectChanges();
     expect(testHostComponent.productCardComponent.isInCart).toBe(true);
-  })
+  });
 
 
 

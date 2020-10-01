@@ -11,7 +11,7 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class ProductCardComponent implements OnInit, OnDestroy {
   @Input() product: IProduct;
-  
+
   cartSubscription: Subscription;
   isInCart = false;
 

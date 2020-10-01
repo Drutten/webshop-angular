@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 import { CartService } from 'src/app/services/cart.service';
 import { CartServiceMock } from 'src/app/services/cart.service.mock';
 import { CategoryService } from 'src/app/services/category.service';
@@ -15,6 +16,7 @@ describe('ProductsHeaderComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ ProductsHeaderComponent ],
+      imports: [RouterTestingModule],
       providers: [
         {provide: CategoryService, useClass: CategoryServiceMock},
         {provide: ProductService, useClass: ProductServiceMock},

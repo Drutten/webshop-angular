@@ -44,7 +44,6 @@ export class CheckoutComponent implements OnInit, OnDestroy {
       email: new FormControl(null, [Validators.required, Validators.email]),
       payment: new FormControl('Visa')
     });
-    //this.orderService.fetchOrders();
   }
 
   ngOnDestroy() {
@@ -86,9 +85,5 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     });
     return orderRows;
   }
-
-  // del() {
-  //   this.orderService.deleteOrder(6178);
-  // }
 
 }

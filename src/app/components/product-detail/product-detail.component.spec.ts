@@ -47,5 +47,6 @@ describe('ProductDetailComponent', () => {
     component.addToCart();
     fixture.detectChanges();
     expect(spy).toHaveBeenCalled();
-  })
+  });
+
 });

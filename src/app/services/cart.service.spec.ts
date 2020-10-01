@@ -10,9 +10,11 @@ describe('CartService', () => {
     service = TestBed.inject(CartService);
   });
 
+
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
 
   it('should add cartItem', () => {
     expect(service.getCartItems().length).toBe(0);
@@ -29,6 +31,7 @@ describe('CartService', () => {
     service.addCartItem(product);
     expect(service.getCartItems().length).toBe(1);
   });
+
 
   it('should remove cartItem', () => {
     const addedProduct = {
@@ -49,6 +52,7 @@ describe('CartService', () => {
     expect(service.getCartItems().length).toBe(0);
   });
 
+
   it('should update quantity to be 2', () => {
     const addedProduct = {
       name: 'test product',
@@ -66,6 +70,7 @@ describe('CartService', () => {
     service.updateCartItem(cartItem, 1);
     expect(service.getCartItems()[0].quantity).toBe(2);
   });
+
 
   it('should update total to be 200', () => {
     const addedProduct = {
@@ -85,6 +90,7 @@ describe('CartService', () => {
     expect(service.getCartItems()[0].total).toBe(200);
   });
 
+
   it('should clear cart', () => {
     const addedProduct = {
       name: 'test product',
@@ -100,4 +106,5 @@ describe('CartService', () => {
     service.clearCart();
     expect(service.getCartItems().length).toBe(0);
   });
+  
 });

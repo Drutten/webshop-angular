@@ -26,7 +26,7 @@ describe('CheckoutComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-  
+
 
   it('should create', () => {
     expect(component).toBeTruthy();
@@ -50,6 +50,6 @@ describe('CheckoutComponent', () => {
     });
     fixture.detectChanges();
     expect(spy).toHaveBeenCalled();
-  })
+  });
 
 });

@@ -1,17 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
+import { ILoginService } from '../interfaces/i-login-service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService {
-  //username = '';
+export class LoginService implements ILoginService{
   private loggedIn = false;
   private isLoggedIn = new Subject<boolean>();
   isLoggedIn$ = this.isLoggedIn.asObservable();
-  // private loggedInUser = new Subject<string>();
-  // loggedInUser$ = this.loggedInUser.asObservable();
 
 
   constructor(private router: Router) { }
@@ -30,16 +28,5 @@ export class LoginService {
   getIsLoggedIn(): boolean {
     return this.loggedIn;
   }
-
-  // changeLoggedInState() {
-  //   this.loggedIn = !this.loggedIn;
-  //   // this.isLoggedIn.next(this.loggedIn);
-  //   // if (username && this.loggedIn) {
-  //   //   this.username = username;
-  //   //   this.loggedInUser.next(this.username);
-  //   // }
-  //   // else {
-  //   //   this.loggedInUser.next('');
-  //   // }
-  // }
+  
 }

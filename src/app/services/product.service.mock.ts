@@ -25,12 +25,6 @@ export class ProductServiceMock implements IProductService {
   fetchProduct(id: number): void {
     this.product.next({id: 1, name: 'Kitty', description: 'Test movie 1', imageUrl: 'url1', price: 100, year: '2000', productCategory:[]});
   }
-  
-  fetchProductsBySearch(searchText: string): void {
-    this.products.next([
-      {id: 1, name: 'Kitty', description: 'Test movie 1', imageUrl: 'url1', price: 100, year: '2000', productCategory:[]},
-      {id: 6, name: 'Kitty 2', description: 'Test movie 6', imageUrl: 'url6', price: 100, year: '2000', productCategory:[]},
-      {id: 3, name: 'Pelle', description: 'Test movie 3', imageUrl: 'url3', price: 100, year: '2000', productCategory:[]}
-    ]);
-  }
+
+  fetchProductsBySearch(searchText: string): void {}
 }

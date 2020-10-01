@@ -32,6 +32,13 @@ describe('CartItemCardComponent', () => {
     expect(testHostComponent.cartItemCardComponent.cartItem.quantity).toBe(2);
   });
 
+
+  it('should display test', () => {
+    testHostFixture.detectChanges();
+    expect(testHostFixture.nativeElement.querySelector('h5').innerText).toContain('test');
+  });
+
+
   it('should call service method #updateCartItem by calling #update', () => {
     let cartService = testHostFixture.debugElement.injector.get(CartService);
     let spy = spyOn(cartService, 'updateCartItem');
@@ -40,6 +47,7 @@ describe('CartItemCardComponent', () => {
     expect(spy).toHaveBeenCalled();
   });
 
+  
   it('should call service method #removeCartItem by calling #remove', () => {
     let cartService = testHostFixture.debugElement.injector.get(CartService);
     let spy = spyOn(cartService, 'removeCartItem');

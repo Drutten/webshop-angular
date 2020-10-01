@@ -3,7 +3,7 @@ import {HttpClientTestingModule, HttpTestingController} from '@angular/common/ht
 
 import { ProductService } from './product.service';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { API_PRODUCTS_ENDPOINT, API_SEARCH_ENDPOINT } from '../shared/constants';
+import { API_PRODUCTS_ENDPOINT } from '../shared/constants';
 import { IProduct } from '../interfaces/i-product';
 
 describe('ProductService', () => {
